@@ -1,0 +1,16 @@
+.main{
+    margin: 2% auto 2% auto;
+}
+
+.block{
+    margin: 2.5% auto 2% auto;
+    width: 90%;
+    height: 100%;
+    background-color: red;
+    border: 1px solid black;
+}
+
+.button-large{
+    padding: 20px 3% 20px 3%;
+    margin: 1%;
+}
