@@ -12,7 +12,7 @@ const io = socketIO(server);
 
 app.set('view engine', 'ejs');
 
-const mediaPath = './appdata/'
+var mediaPath = '/appdata/' + data;
 
 var button = {
     name: '',
@@ -63,6 +63,29 @@ app.post('/', function(req, res){
     res.redirect('/')
 })
 
-app.listen(3000, ip, function(){
+
+var data = ''
+
+
+app.get('/output', function(req, res){
+    res.render('output', {item: data, iodata: io});
+    console.log('output is online')
+})
+
+app.post('/output', function(req, res){
+    data = '/appdata/' + req.body.path;
+    console.log(data)
+    io.emit('message', 'load')
+})
+
+io.on('connection', (socket) => {
+    console.log('Cliente conectado');
+
+    socket.on('message', (data) => {
+        console.log('Mensagem recebida:', data);
+    });
+});
+
+server.listen(3000, ip, function(){
     console.log('listening at port 3000')
 });

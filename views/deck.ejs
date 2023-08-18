@@ -33,7 +33,7 @@
     </div>
 
     <div class="main">
-        <form action="http://127.0.0.1:3300/output" method="post">
+        <form action="http://192.168.100.119:3000/output" method="post">
             <div class="block container-xl" id="row-1">
                 <% for (var i = 0; i < newListItems.length; i++) { %>
                     <button class="button-large" id="sendData" style = "background-color: <%= newListColor[i] %>" name = "path" value=<%= newListNames[i] %> action="#">   <%= newListItems[i] %> </button>
@@ -49,7 +49,7 @@
             const socket = io()
 
             sendButton.addEventListener('click', () => {
-            socket.emit('message', { content: 'reload-client-1' });
+            socket.emit('message', 'load');
         });
         </script>
     </div>

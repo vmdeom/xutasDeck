@@ -27,13 +27,12 @@ var data = ''
 const mediaPath = '/appdata/' + data;
 
 app.get('/output', function(req, res){
-    res.render('output', {item: data, iodata: io});
+    res.render('output', {item: mediaPath, iodata: io});
     console.log('output is online')
 })
 
 app.post('/output', function(req, res){
     data = req.body.path;
-
 })
 
 io.on('connection', (socket) => {
@@ -43,7 +42,6 @@ io.on('connection', (socket) => {
         console.log('Mensagem recebida:', data);
     });
 });
-
 
 server.listen(3300, ip, function(){
     console.log('listening at port 3300');

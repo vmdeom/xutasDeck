@@ -9,13 +9,21 @@
 
     <script type="module">
         import {io} from "https://cdn.socket.io/4.4.1/socket.io.esm.min.js";
-        const socket = io('http://127.0.0.1:3300');
-        console.log('as1')
-        socket.on('message', 'reload-client-1', () => {
-            console.log('asd')
-            location.reload();
-        });
+        
+        const socket = io();
+        socket.on('message', (data) => {
+            location.reload()
+        })
+
     </script>
+
+Z   <p id='a1' style = "color: #FFFFFF">1</p>
+    <script>
+        const item = document.getElementById('a1');
+        item.innerHTML = Math.random()
+    </script>
+    
+
 
     <div style="background-color: #FFFFFF">
         <audio controls autoplay>
