@@ -31,14 +31,27 @@
             </form>
         </div>
     </div>
+
     <div class="main">
         <form action="http://127.0.0.1:3300/output" method="post">
             <div class="block container-xl" id="row-1">
                 <% for (var i = 0; i < newListItems.length; i++) { %>
-                    <button class="button-large" style = "background-color: <%= newListColor[i] %>" name = "path" value=<%= newListNames[i] %>>   <%= newListItems[i] %> </button>
+                    <button class="button-large" id="sendData" style = "background-color: <%= newListColor[i] %>" name = "path" value=<%= newListNames[i] %> action="#">   <%= newListItems[i] %> </button>
                 <% } %>
             </div>
         </div>            
-    </form>
+        </form>
+        <script type="module">
+            import { io } from "https://cdn.socket.io/4.4.1/socket.io.esm.min.js";
+
+            const sendButton = document.getElementById('sendData');
+
+            const socket = io()
+
+            sendButton.addEventListener('click', () => {
+            socket.emit('message', { content: 'reload-client-1' });
+        });
+        </script>
+    </div>
 </body>
 </html>

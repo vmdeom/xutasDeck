@@ -1,9 +1,14 @@
 const ip = require('./config.js')
 const express = require('express');
 const bodyparser = require('body-parser');
+const http = require('http')
 const ejs = require('ejs');
+const socketIO = require('socket.io')
+const cors = require('cors')
 
 app = express()
+const server = http.createServer(app);
+const io = socketIO(server);
 
 app.set('view engine', 'ejs');
 
@@ -31,6 +36,11 @@ var names = []
 app.use(bodyparser.urlencoded({extended: true}));
 //app.use(bodyparser.json)
 app.use(express.static(__dirname + '/public'));
+
+app.use(cors({
+    origin: 'http://127.0.0.1:3300',
+    methods: ['GET', 'POST']}
+    ));
 
 app.get('/', function(req, res){
     res.render('deck', {newListItems: items, newListColor: colorsl, newListNames: names})

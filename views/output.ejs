@@ -5,7 +5,18 @@
     <meta name="viewport" content="width=512, height=512 initial-scale=1.0">
     <title>Output</title>
 </head>
-<body>  
+<body>
+
+    <script type="module">
+        import {io} from "https://cdn.socket.io/4.4.1/socket.io.esm.min.js";
+        const socket = io('http://127.0.0.1:3300');
+        console.log('as1')
+        socket.on('message', 'reload-client-1', () => {
+            console.log('asd')
+            location.reload();
+        });
+    </script>
+
     <div style="background-color: #FFFFFF">
         <audio controls autoplay>
             <source src=<%= item %> type="audio/mpeg">
