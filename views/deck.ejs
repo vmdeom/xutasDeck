@@ -8,37 +8,37 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
-
     <link rel="stylesheet" href="css/styles.css">
 
 </head>
 <body>
-    <div class="main">
-        <div class="block container-xl" id="row-1">
-            <form action="" method="post">
-                <button class="btn btn-secondary button-large" id="a1" name="add-1" value="123">+</button>
+    <script>
+        function hideButton(){
+        var elemtent = document.getElementById('main')
+        elemtent.classList.toggle('hideous-main')
+        }
+    </script>
+    <button style="width: 8px; height: 16px; margin-left: 4px;" onclick="hideButton()"></button>
+    <div class="main" id="main">
+        <div class="block conteiner-xl" id="input-area">
+            <form class="item"  action="/" method="post">
+                <input type="text" name="newItem" placeholder="Name" autocomplete="off" required><br><br>
+                <input type="radio" name="newItem" value="audio" required><label>Audio</label><br>
+                <input type="radio" name="newItem" value="image" required><label>Image</label><br>
+                <input type="radio" name="newItem" value="effect" required><label>Effect</label><br>
+                <input type="text" name="newItem" placeholder="filename" autocomplete="off" required>
+                <button type="submit" name="list" class="btn btn-secondary button-large">+</button>
             </form>
         </div>
-        <div class="block container-xl" id="row-2">
-            <button class="btn btn-primary button-large">1</button> 
-            <button class="btn btn-primary button-large">1</button> 
-            <button class="btn btn-primary button-large">1</button> 
-            <button class="btn btn-primary button-large">1</button> 
-            <button class="btn btn-primary button-large">1</button> 
-            <button class="btn btn-primary button-large">1</button> 
-            <button class="btn btn-primary button-large">1</button> 
-            <button class="btn btn-primary button-large">1</button> 
-        </div>
-        <div class="block container-xl" id="row-3">
-            <button class="btn btn-primary button-large">1</button> 
-            <button class="btn btn-primary button-large">1</button> 
-            <button class="btn btn-primary button-large">1</button> 
-            <button class="btn btn-primary button-large">1</button> 
-            <button class="btn btn-primary button-large">1</button> 
-            <button class="btn btn-primary button-large">1</button> 
-            <button class="btn btn-primary button-large">1</button> 
-            <button class="btn btn-primary button-large">1</button> 
-        </div>
     </div>
+    <div class="main">
+        <form action="http://127.0.0.1:3300/output" method="post">
+            <div class="block container-xl" id="row-1">
+                <% for (var i = 0; i < newListItems.length; i++) { %>
+                    <button class="button-large" style = "background-color: <%= newListColor[i] %>" name = "path" value=<%= newListNames[i] %>>   <%= newListItems[i] %> </button>
+                <% } %>
+            </div>
+        </div>            
+    </form>
 </body>
 </html>
