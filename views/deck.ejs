@@ -21,7 +21,7 @@
     <button style="width: 8px; height: 16px; margin-left: 4px;" onclick="hideButton()"></button>
     <div class="main" id="main">
         <div class="block conteiner-xl" id="input-area">
-            <form class="item"  action="/" method="post">
+            <form class="item"  action="/deck" method="post">
                 <input type="text" name="newItem" placeholder="Name" autocomplete="off" required><br><br>
                 <input type="radio" name="newItem" value="audio" required><label>Audio</label><br>
                 <input type="radio" name="newItem" value="image" required><label>Image</label><br>
@@ -36,11 +36,10 @@
         <form action="http://192.168.100.119:3000/output" method="post">
             <div class="block container-xl" id="row-1">
                 <% for (var i = 0; i < newListItems.length; i++) { %>
-                    <button class="button-large" id="sendData" style = "background-color: <%= newListColor[i] %>" name = "path" value=<%= newListNames[i] %> action="#">   <%= newListItems[i] %> </button>
-                <% } %>
+                    <button class="button-large" id="sendData" style="background-color: <%= newListColor[i] %>" name="path" value=<%= newListNames[i] %> action="#">   <%= newListItems[i] %> </button>                <% } %>
             </div>
-        </div>            
         </form>
+
         <script type="module">
             import { io } from "https://cdn.socket.io/4.4.1/socket.io.esm.min.js";
 
@@ -49,8 +48,9 @@
             const socket = io()
 
             sendButton.addEventListener('click', () => {
-            socket.emit('message', 'load');
-        });
+                socket.emit('message', 'load')
+            });
+
         </script>
     </div>
 </body>
