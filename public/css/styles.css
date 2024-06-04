@@ -1,18 +1,19 @@
-.main{
-    margin: 2% auto 2% auto;
-}
-
-.hideous-main{
-    visibility: hidden;
-    height: 0px;
+*{
+    margin: 0;
+    padding: 0;
 }
 
 .block{
-    margin: 2.5% auto 2% auto;
-    width: 90%;
+    margin: auto;
+    padding: 5%;
+    position: fixed;
+    width: 100%;
     height: 100%;
     background-color: red;
     border: 1px solid black;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    justify-content: center;
 }
 
 .small-block{
@@ -20,13 +21,6 @@
     width: 64px;
     height: 64px;
     background-color: blue;
-    border: 1px solid black;
-}
-
-.menu-button{
-    margin: 1px;
-    width: 16px;
-    height: 16px;
     border: 1px solid black;
 }
 
@@ -40,6 +34,8 @@
 }
 
 .button-large{
-    padding: 25px 3% 25px 3%;
-    margin: 1%;
+    padding: 2px;
+    margin: auto;
+    width: 128px;
+    height: 128px;
 }

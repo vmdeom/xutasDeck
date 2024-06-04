@@ -29,7 +29,7 @@ app.use(cors({
 
 //--deck route----
 app.get('/deck', function(req, res){
-    res.render('deck', {newListItems: items, newListColor: colorsl, newListNames: names})
+    res.render('deck')
 });
 
 app.post('/deck', function(req, res){
