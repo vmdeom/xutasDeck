@@ -8,7 +8,8 @@ const cors = require('cors');
 //--vars----------
 var button = {
     name: '',
-    id: ''
+    id: '',
+    path: ''
 }
 var buttons = []
 var media = ''
@@ -34,6 +35,16 @@ app.get('/deck', function(req, res){
     res.render('deck', {buttons: buttons})
 });
 //--deck route----
+
+//--saveform route
+app.get('/input', function(req, res){
+    res.render('/saveform')
+})
+
+app.post('/input', function(req, res){
+    let btn = req.body
+})
+//--saveform route
 
 //--output route--
 app.get('/output', function(req, res){
