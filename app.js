@@ -6,9 +6,11 @@ const socketIO = require('socket.io');
 const cors = require('cors');
 
 //--vars----------
-var items = []
-var colorsl = []
-var names = []
+var button = {
+    name: '',
+    id: ''
+}
+var buttons = []
 var media = ''
 //--vars----------
 
@@ -29,26 +31,8 @@ app.use(cors({
 
 //--deck route----
 app.get('/deck', function(req, res){
-    res.render('deck')
+    res.render('deck', {buttons: buttons})
 });
-
-app.post('/deck', function(req, res){
-
-    let item = req.body.newItem;
-    items.push(item[0]);
-
-    dicts.button = {
-        name: item[0],
-        type: item[1],
-        path: item[2],
-        color: dicts.colors[item[1].toLowerCase()]
-    }
-
-    colorsl.push(dicts.button.color)
-    names.push(dicts.button.path)
-    console.log(dicts.button.color)
-    res.redirect('/deck')
-})
 //--deck route----
 
 //--output route--
