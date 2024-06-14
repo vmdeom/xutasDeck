@@ -14,7 +14,8 @@
 <body>
 
     <div class="main">           
-        <div class="block" id="row-1">
+        <div class="block" id="row-1">  
+
             <button class="button-large" id="sendData" style="background-color: white;" name="path" value="button_0" action="#"></button>
             <button class="button-large" id="sendData" style="background-color: white;" name="path" value="button_1" action="#"></button>
             <button class="button-large" id="sendData" style="background-color: white;" name="path" value="button_2" action="#"></button>
@@ -25,6 +26,7 @@
             <button class="button-large" id="sendData" style="background-color: white;" name="path" value="button_7" action="#"></button>
             <button class="button-large" id="sendData" style="background-color: white;" name="path" value="button_8" action="#"></button>
             <button class="button-large" id="sendData" style="background-color: white;" name="path" value="button_9" action="#"></button>
+            
         </div>
 
         <script type="module">
@@ -35,7 +37,7 @@
             const socket = io()
 
             sendButton.forEach(element => {
-                element.addEventListener('click', () => {
+                element.addEventListener('click', function() {
                 socket.emit('message', element.value)
                 })
             })
