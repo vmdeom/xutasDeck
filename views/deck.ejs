@@ -15,11 +15,12 @@
 
     <div class="main">           
         <div class="block" id="row-1">  
-            <% for(let i = 0; i < buttons.length; i++) {%>
+            <% for(let i = 0; i < data.length; i++) { %>
+            <% console.log(data[i].id) %>
 
-            <button class="button-large" id="sendData" style="background-color: white;" name="path" value="<%= buttons[i].id %>" action="#"></button>
+            <button class="button-large" id="<%= data[i].id %>"; style="background-color: white;" name="path" value="<%= data[i].path %>" action="#"><%= data[i].name %></button>
             
-            <%}; %>
+            <% }; %>
         </div>
 
         <script type="module">
@@ -31,7 +32,7 @@
 
             sendButton.forEach(element => {
                 element.addEventListener('click', function() {
-                socket.emit('message', element.value)
+                socket.emit('message', {id: element.id, page: 0})
                 })
             })
 
